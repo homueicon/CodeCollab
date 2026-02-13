@@ -6,12 +6,10 @@
   "scripts": {
     "postinstall": "node scripts/setup.js",
     "start": "node scripts/start.js",
+    "start:server": "node server/server.js",
+    "start:electron": "electron .",
     "dev": "node server/server.js",
-    "electron": "electron .",
-    "build": "electron-builder",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux"
+    "electron": "electron ."
   },
   "build": {
     "appId": "com.codecollab.app",
