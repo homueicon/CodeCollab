@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeCollab - Collaborative Code Editor</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Login Screen -->
+  <div id="login-screen" class="screen active">
+    <div class="login-container">
+      <div class="login-header">
+        <i class="fas fa-code"></i>
+        <h1>CodeCollab</h1>
+        <p>Collaborative code editor for all languages</p>
+      </div>
+
+      <div class="login-tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+        <button class="tab-btn" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <div id="login-form" class="auth-form active">
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button onclick="login()">Login</button>
+        <div id="login-error" class="error"></div>
+      </div>
+
+      <div id="register-form" class="auth-form">
+        <input type="text" id="register-username" placeholder="Username" required>
+        <input type="email" id="register-email" placeholder="Email" required>
+        <input type="password" id="register-password" placeholder="Password" required>
+        <button onclick="register()">Register</button>
+        <div id="register-error" class="error"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Editor Screen -->
+  <div id="editor-screen" class="screen">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <i class="fas fa-code"></i>
+        <h2>CodeCollab</h2>
+      </div>
+
+      <div class="user-info">
+        <i class="fas fa-user-circle"></i>
+        <span id="username-display"></span>
+        <button class="logout-btn" onclick="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+
+      <div class="projects-section">
+        <div class="section-header">
+          <h3>Projects</h3>
+          <button onclick="createProject()" title="New Project">
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div id="projects-list" class="projects-list"></div>
+      </div>
+
+      <div class="files-section">
+        <div class="section-header">
+          <h3>Files</h3>
+          <button onclick="createFile()" title="New File" id="new-file-btn" disabled>
+            <i class="fas fa-file-plus"></i>
+          </button>
+        </div>
+        <div id="files-list" class="files-list"></div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Toolbar -->
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span id="current-file-name" class="file-name">Select a file</span>
+          <select id="language-selector" onchange="changeLanguage()" disabled>
+            <option value="">Select Language</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="cpp">C++</option>
+            <option value="c">C</option>
+            <option value="ruby">Ruby</option>
+            <option value="go">Go</option>
+            <option value="php">PHP</option>
+            <option value="bash">Bash</option>
+            <option value="perl">Perl</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <button onclick="saveFile()" id="save-btn" disabled>
+            <i class="fas fa-save"></i> Save
+          </button>
+          <button onclick="downloadFile()" id="download-btn" disabled>
+            <i class="fas fa-download"></i> Download
+          </button>
+          <button onclick="runCode()" id="run-btn" disabled>
+            <i class="fas fa-play"></i> Run
+          </button>
+        </div>
+      </div>
+
+      <!-- Editor -->
+      <div class="editor-container">
+        <textarea id="code-editor"></textarea>
+      </div>
+
+      <!-- Output Panel -->
+      <div class="output-panel">
+        <div class="output-header">
+          <h4>Output</h4>
+          <button onclick="clearOutput()">
+            <i class="fas fa-trash"></i> Clear
+          </button>
+        </div>
+        <div id="output-content" class="output-content"></div>
+      </div>
+
+      <!-- Collaborators Panel -->
+      <div class="collaborators-panel">
+        <h4>
+          <i class="fas fa-users"></i> Active Users
+          <span id="user-count" class="badge">1</span>
+        </h4>
+        <div id="collaborators-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for creating projects/files -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title"></h3>
+      <input type="text" id="modal-input" placeholder="Name">
+      <button onclick="confirmModal()">Create</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/ruby/ruby.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/go/go.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/php/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/shell/shell.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closebrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/matchbrackets.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
