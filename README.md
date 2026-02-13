@@ -4,16 +4,16 @@
 
 ## ✨ Features
 
-- 🔄 **Real-time Collaboration** - Multiple users editing simultaneously
-- 💾 **PostgreSQL Storage** - All files stored securely in database
-- 🖥️ **Electron Desktop App** - Native desktop experience
-- 🌐 **Web Interface** - Also works in browser
-- ▶️ **Code Execution** - Run code directly (10+ languages)
-- 🎨 **Syntax Highlighting** - Beautiful code editor with CodeMirror
-- 📁 **Project Management** - Organize files into projects
-- 👥 **User System** - Secure authentication with JWT
-- 💬 **WebSocket Sync** - Lightning-fast real-time updates
-- 📥 **File Download** - Export your code anytime
+-  **Real-time Collaboration** - Multiple users editing simultaneously
+-  **PostgreSQL Storage** - All files stored securely in database
+-  **Electron Desktop App** - Native desktop experience
+-  **Web Interface** - Also works in browser
+-  **Code Execution** - Run code directly (10+ languages)
+-  **Syntax Highlighting** - Beautiful code editor with CodeMirror
+-  **Project Management** - Organize files into projects
+-  **User System** - Secure authentication with JWT
+-  **WebSocket Sync** - Lightning-fast real-time updates
+-  **File Download** - Export your code anytime
 
 ## 🎯 Quick Start
 ```bash
