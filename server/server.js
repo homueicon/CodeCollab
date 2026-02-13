@@ -450,7 +450,9 @@ async function startServer() {
     process.exit(1);
   }
 }
-
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
 startServer();
 
 process.on('SIGINT', () => {
