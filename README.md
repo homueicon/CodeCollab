@@ -5,8 +5,8 @@
 | *Windows:*                   | Partially Working      |  
 | *Linux:*                     | Working                |
 | *MacOS:*                     | Working                |
-|*OS/2:*                       | OS/2                   |
-|*HomuOS_*                     | HomuOS                 |
+|*OS/2:*                       | Broken/Unsupported     |
+|*HomuOS_*                     | Developed in.          |
 
 # **A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
 
