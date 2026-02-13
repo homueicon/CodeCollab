@@ -8,7 +8,7 @@
 - *OS/2: Unsupported*
 - *HomuOS: Working but has bugs*
 
-**A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
+# **A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
 
 ## ✨ Features
 
