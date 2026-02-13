@@ -6,7 +6,7 @@
 | *Linux:*                     | Working                |
 | *MacOS:*                     | Working                |
 |*OS/2:*                       | OS/2                   |
-|*HomuOS*                      | HomuOS                 |
+|*HomuOS_*                     | HomuOS                 |
 
 # **A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
 
