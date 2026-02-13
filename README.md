@@ -2,11 +2,11 @@
 
 # OS/Kernel Compatibility.
 
-Windows: Partially Working
-Linux: Working
-MacOS: Working
-OS/2: Unsupported
-HomuOS: Working but has bugs
+- *Windows: Partially Working*
+- *Linux: Working*
+- *MacOS: Working*
+- *OS/2: Unsupported*
+- *HomuOS: Working but has bugs*
 
 **A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
 
