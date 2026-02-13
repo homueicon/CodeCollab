@@ -1,5 +1,13 @@
 # 🚀 CodeCollab
 
+# OS/Kernel Compatibility.
+
+Windows: Partially Working
+Linux: Working
+MacOS: Working
+OS/2: Unsupported
+HomuOS: Working but has bugs
+
 **A powerful, real-time collaborative code editor built with Electron and PostgreSQL**
 
 ## ✨ Features
@@ -113,7 +121,7 @@ npm run build:linux # Build Linux AppImage
 | Java       | .java     | Working      |
 | C++        | .cpp      | Working      |
 | C          | .c        | Working      |
-| Ruby       | .rb       |  Working     |
+| Ruby       | .rb       | Working      |
 | Go         | .go       | Working      |
 | PHP        | .php      | Working      |
 | Bash       | .sh       | Working      |
